@@ -1,9 +1,8 @@
 import requests
 import json
 import os
-import urllib.parse
 from colorama import *
-from datetime import datetime, timedelta
+from datetime import datetime
 import time
 import pytz
 
@@ -60,12 +59,15 @@ class PadTON:
         })
 
         response = self.session.post(url, headers=self.headers, data=data)
-        result = response.json()
-        if result['status']:
-            return result['data']['accessToken']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']['accessToken']
+            else:
+                return None
         else:
             return None
-        
+
     def users_me(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/users/me'
         self.headers.update({
@@ -74,12 +76,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def loyality_wallet(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/loyalty-wallet'
         self.headers.update({
@@ -88,12 +93,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def entry_requirements(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/entry-requirements/my-list'
         self.headers.update({
@@ -102,12 +110,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def verify_requirements(self, token: str, require_id: str):
         url = f'https://api-community-miniapp.padton.com/api/entry-requirements/{require_id}/verify'
         data = {}
@@ -117,12 +128,15 @@ class PadTON:
         })
 
         response = self.session.post(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def notifications(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/notifications?isRead=false'
         self.headers.update({
@@ -131,12 +145,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def read_notifications(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/notifications/read'
         data = {}
@@ -146,12 +163,15 @@ class PadTON:
         })
 
         response = self.session.patch(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def farm_pool(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/farm-pool/current'
         self.headers.update({
@@ -160,12 +180,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def start_farm(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/farm-pool'
         data = {}
@@ -175,9 +198,12 @@ class PadTON:
         })
 
         response = self.session.post(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
 
@@ -190,12 +216,15 @@ class PadTON:
         })
 
         response = self.session.patch(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def lucky_spin(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/lucky-spin/profile'
         self.headers.update({
@@ -204,12 +233,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def spin_wheel(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/lucky-spin/spin'
         data = {}
@@ -219,12 +251,15 @@ class PadTON:
         })
 
         response = self.session.post(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def missions(self, token: str):
         url = 'https://api-community-miniapp.padton.com/api/missions'
         self.headers.update({
@@ -233,12 +268,15 @@ class PadTON:
         })
 
         response = self.session.get(url, headers=self.headers)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def start_missions(self, token: str, mission_id: str):
         url = f'https://api-community-miniapp.padton.com/api/missions/{mission_id}/start'
         data = {}
@@ -248,12 +286,15 @@ class PadTON:
         })
 
         response = self.session.patch(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def claim_missions(self, token: str, mission_id: str):
         url = f'https://api-community-miniapp.padton.com/api/missions/{mission_id}/claim'
         data = {}
@@ -263,12 +304,15 @@ class PadTON:
         })
 
         response = self.session.patch(url, headers=self.headers, json=data)
-        result = response.json()
-        if result['status']:
-            return result['data']
+        if response.status_code in [200, 201]:
+            result = response.json()
+            if result and result['status']:
+                return result['data']
+            else:
+                return None
         else:
             return None
-        
+
     def process_query(self, query: str):
 
         token = self.auth_signin(query)
@@ -307,12 +351,12 @@ class PadTON:
             time.sleep(1)
 
             requirements = self.entry_requirements(token)
-            if requirements:
+            if requirements is not None:
                 for require in requirements:
                     require_id = require['id']
                     status = require['status']
 
-                    if require and status == 'PENDING':
+                    if require is not None and status == 'PENDING':
                         verify = self.verify_requirements(token, require_id)
                         if verify and verify['status'] == 'SUCCESS':
                             self.log(
@@ -341,14 +385,14 @@ class PadTON:
 
 
             notifications = self.notifications(token)
-            if notifications:
+            if notifications is not None:
                 self.read_notifications(token)
 
 
             farm = self.farm_pool(token)
             if farm is None:
                 start = self.start_farm(token)
-                if start:
+                if start is not None:
                     end_at = datetime.strptime(start['estimatedEndAt'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.utc)
                     end_at_wib = end_at.astimezone(wib).strftime('%x %X %Z')
                     self.log(
@@ -368,7 +412,7 @@ class PadTON:
 
                 farm = self.farm_pool(token)
 
-            if farm:
+            if farm is not None:
                 farm_id = farm['id']
 
                 end_at = datetime.strptime(farm['estimatedEndAt'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.utc)
@@ -378,7 +422,7 @@ class PadTON:
 
                 if now_utc >= end_at:
                     claim = self.claim_farm(token, farm_id)
-                    if claim:
+                    if claim is not None:
                         self.log(
                             f"{Fore.MAGENTA+Style.BRIGHT}[ Farming{Style.RESET_ALL}"
                             f"{Fore.GREEN+Style.BRIGHT} Is Claimed {Style.RESET_ALL}"
@@ -395,7 +439,7 @@ class PadTON:
                     time.sleep(1)
 
                     start = self.start_farm(token)
-                    if start:
+                    if start is not None:
                         end_at = datetime.strptime(start['estimatedEndAt'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=pytz.utc)
                         end_at_wib = end_at.astimezone(wib).strftime('%x %X %Z')
                         self.log(
@@ -422,11 +466,11 @@ class PadTON:
                 time.sleep(1)
 
             lucky_spin = self.lucky_spin(token)
-            if lucky_spin:
+            if lucky_spin is not None:
                 count = lucky_spin['totalSpin']
                 while count > 0:
                     spin = self.spin_wheel(token)
-                    if spin:
+                    if spin is not None:
                         reward = spin['amount']
                         symbol = spin['currencySymbol']
                         self.log(
@@ -458,14 +502,14 @@ class PadTON:
             time.sleep(1)
 
             missions = self.missions(token)
-            if missions:
+            if missions is not None:
                 for mission in missions:
                     mission_id = mission['id']
                     status = mission['status']
 
-                    if mission and status == 'INIT':
+                    if mission is not None and status == 'INIT':
                         start = self.start_missions(token, mission_id)
-                        if start and start['status'] == 'PENDING':
+                        if start is not None and start['status'] == 'PENDING':
                             self.log(
                                 f"{Fore.MAGENTA+Style.BRIGHT}[ Task{Style.RESET_ALL}"
                                 f"{Fore.WHITE+Style.BRIGHT} {mission['name']} {Style.RESET_ALL}"
@@ -475,7 +519,7 @@ class PadTON:
                             time.sleep(3)
 
                             claim = self.claim_missions(token, mission_id)
-                            if claim and claim['status'] == 'SUCCESS':
+                            if claim is not None and claim['status'] == 'SUCCESS':
                                 self.log(
                                     f"{Fore.MAGENTA+Style.BRIGHT}[ Task{Style.RESET_ALL}"
                                     f"{Fore.WHITE+Style.BRIGHT} {mission['name']} {Style.RESET_ALL}"
@@ -500,9 +544,9 @@ class PadTON:
                             )
                         time.sleep(2)
 
-                    elif mission and status == 'PENDING':
+                    elif mission is not None and status == 'PENDING':
                         claim = self.claim_missions(token, mission_id)
-                        if claim:
+                        if claim is not None:
                             self.log(
                                 f"{Fore.MAGENTA+Style.BRIGHT}[ Task{Style.RESET_ALL}"
                                 f"{Fore.WHITE+Style.BRIGHT} {mission['name']} {Style.RESET_ALL}"
