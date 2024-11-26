@@ -6,9 +6,11 @@ Register Here : [PadTON](https://t.me/PadTON_bot/?start=r_X7GQDBMD)
 ## Fitur
 
   - Auto Get Account Information
+  - Auto Complete Requirements
+  - Auto Complete Task
   - Auto Start and Claim Farming
   - Auto Play Game Spin
-  - Auto Complete Task
+  - Auto Participate in #PATC Lottery Pools
   - Multi Account
 
 ## Prasyarat
