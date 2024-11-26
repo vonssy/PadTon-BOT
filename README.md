@@ -10,7 +10,7 @@ Register Here : [PadTON](https://t.me/PadTON_bot/?start=r_X7GQDBMD)
   - Auto Complete Task
   - Auto Start and Claim Farming
   - Auto Play Game Spin
-  - Auto Participate in #PATC Lottery Pools
+  - Auto Participate in #PATC Lottery Pools [y/n]
   - Multi Account
 
 ## Prasyarat
